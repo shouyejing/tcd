@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="website.about-us" model="ir.ui.view">
+            <field name="name">About us</field>
+            <field name="type">qweb</field>
+            <field name="key">website.about-us</field>
+            <field name="website_id" ref="website.default_website"/>
+            <field name="arch" type="xml">
+                <t t-name="website.about-us">
+                  <t t-call="website.layout">
+                    <div id="wrap" class="oe_structure oe_empty">
+                      <section class="s_media_block o_animate mt0 o_player_wrapper" style="height: 256px; overflow: hidden; max-height: 675.5px; animation-play-state: paused;" custom_content="&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/HyaSMX0qFaw&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;" header_type="custom_content" yt-bg="js-rgba(0, 0, 0, 0)" webm="http://media.sublimevideo.net/v/midnight-sun-short-edit-360p.webm" mp4="http://media.sublimevideo.net/v/midnight-sun-short-edit-360p.mp4" src="https://youtu.be/HyaSMX0qFaw" muted="muted" loop="loop" autoplay="autoplay" opacity="1" background="js-rgba(0, 0, 0, 0)" iframefit="fitCont">
+                        <div class="v-align text-center preserve3d">
+                          <h1 class="text-center">The Team</h1>
+                        </div>
+                      </section>
+                      <section class="s_text_block">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12 text-center mt16 mb0">
+                              <h2 style="text-align: left;">The ClubDeal team: dedicated towards your financial goals</h2>
+                            </div>
+                            <div class="col-md-12 mb16 mt16">
+                              <p>Hard work, enthusiasm, passion, delivery on promises are our common mantra and we put all that energy together to help our members grow their investments and provide the adequate support to our entrepreneurs.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="s_image_text">
+                        <div class="container">
+                          <div class="row">
+                            <div class="mt16 col-md-2">
+                              <img class="img img-responsive mb16 shadow" style="transform: translateX(-3%) translateY(-1.8%) scaleX(0.95) scaleY(0.95);" src="/tcd_website/static/img/jean_marc_legrand.png"/>
+                            </div>
+                            <div class="mt16 col-md-10">
+                              <h3>Jean-Marc Legrand – Managing Director</h3>
+                              <p>Jean-Marc is a lawyer (UCL – 92) and a holder of several diplomas in finance, tax and business management.</p>
+                              <p>Jean-Marc has been corporate and investment banker with Bank Brussels Lambert (Brussels, London, Tokyo), ING Barings (Tokyo) from 1992 until 2002 and Manager of Private Banks (ING in Eastern Belgium and Brussels) and UBS in Belgium, from 2002 until 2012.&amp;nbsp;</p>
+                              <p>He has subsequently co-founded FIDE Capital, a conflict of interest-free asset manager in Brussels from 2012 and remains a stakeholder of the conflict of interest-free investment engine which performs over there. He is a member of the board of several companies.</p>
+                              <p>He masters 6 languages: French, English, Dutch, German, Japanese and Italian.</p>
+                              <p>Jean-Marc is a passionate professional whose background is in developing businesses and achieving turn arounds in strategies given wider influences of markets or evolving stakeholder's environment. He has managed smaller and large teams in various cultural environments.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="s_image_text">
+                        <div class="container">
+                          <div class="row">
+                            <div class="mt16 col-md-2">
+                              <img class="img img-responsive mb16 shadow" style="transform: translateX(-3%) translateY(-1.8%) scaleX(0.95) scaleY(0.95);" src="/tcd_website/static/img/nicolas_demoreau.png"/>
+                            </div>
+                            <div class="mt16 col-md-10">
+                              <h3>Nicolas de Moreau - CIO</h3>
+                              <p>Nicolas is a business engineer (KU Leuven) and holds other diplomas in IT and law.</p>
+                              <p>He speaks fluently French, Dutch, English and Spanish.</p>
+                              <p>As a serial entrepreneur, he has successfully developed and sold several companies, in retail fashion, and web-based relationship marketing. He has also held general management positions in Sodexo.</p>
+                              <p>Nicolas is a member of the board of several companies in which he has invested.</p>
+                              <p>He is a co-founder of “Réseau Entreprendre” whereby successful entrepreneurs volunteer for coaching starters.</p>
+                              <p>Nicolas’ objectives are of delivering a unique IT based process, offering efficiency in structuration and information of investment opportunities. He brings a wide experience of investing in and developing companies in various sectors, while bringing a skillset as a Chief Technology Officer.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="s_image_text">
+                        <div class="container">
+                          <div class="row">
+                            <div class="mt16 col-md-2">
+                              <img class="img img-responsive mb16 shadow" style="transform: translateX(-3%) translateY(-1.8%) scaleX(0.95) scaleY(0.95);" src="/tcd_website/static/img/marc_stroomer.png" data-pin-nopin="true"/>
+                            </div>
+                            <div class="mt16 col-md-10">
+                              <h3>Marc Stroomer - Real Estate Manager</h3>
+                              <p>Marc is a serial entrepreneur. Holder of a master of the European university, he speaks fluently French, English, Dutch, Chinese. He has successfully developed several companies, mainly in the horeca business, and in real estate. He brings a deep experience in real estate development.</p>
+                              <p>Marc’s objective is of identifying, analyzing, proposing for selection and development the best real estate development projects, while putting his wide experience and negotiation skills at the disposal of the stakeholders of TheClubDeal.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="s_image_text">
+                        <div class="container">
+                          <div class="row">
+                            <div class="mt16 col-md-2">
+                              <img class="img img-responsive mb16 shadow" style="transform: translateX(-3%) translateY(-1.8%) scaleX(0.95) scaleY(0.95);" src="/tcd_website/static/img/nicolas_roberti.png" data-pin-nopin="true"/>
+                            </div>
+                            <div class="mt16 col-md-10">
+                              <h3>Nicolas Roberti de Winghe - Business Manager</h3>
+                              <p>Nicolas is master in Business Science (LLN). He speaks fluently French, Dutch, English, Portuguese.</p>
+                              <p>He has been sales and project manager for UBS Belgium and Puilaetco, where he has contributed to the project management of restructurations and other strategic and organizational projects.</p>
+                              <p>Nicolas’ proven track record is in project management, from idea to results. Having evolved in the best multinationals of their sector, he brings a determined skillset in achieving the highest standards of execution.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </t>
+                </t>
+            </field>
+        </record>
+
+        <record id="menu_about_us" model="website.menu">
+            <field name="name">About us</field>
+            <field name="url" eval="'/page/about-us'"/>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">50</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record>
+  </data>
+
+</openerp>

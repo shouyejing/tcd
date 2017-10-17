@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="tcd_assets_frontend" inherit_id="website.assets_frontend" name="TCD Website Assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/tcd_website/static/lib/js/justgage.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/raphael-2.1.4.min.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/pivot.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/jquery.jqplot.min.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.barRenderer.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.CategoryAxisRenderer.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.EnhancedLegendRenderer.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/src/js/gauges.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/src/js/general.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/src/js/jqplot.js"></script>
+                <link rel="stylesheet" type="text/css" href="/tcd_website/static/lib/css/pivot.css"></link>
+                <link rel="stylesheet" type="text/css" href="/tcd_website/static/lib/css/jquery.jqplot.min.css"></link>
+                <link rel="stylesheet" type="text/css" href="/tcd_website/static/src/css/tcd_website.css"></link>
+            </xpath>
+        </template>
+    </data>
+</openerp>

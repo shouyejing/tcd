@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_task_category_form" model="ir.ui.view">
+            <field name="name">tcd.project.task.category.form</field>
+            <field name="model">project.task.category</field>
+            <field name="arch" type="xml">
+                <form string="Task Category">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="role"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="project_task_category_list" model="ir.ui.view">
+            <field name="name">tcd.project.task.category.list</field>
+            <field name="model">project.task.category</field>
+            <field name="arch" type="xml">
+                <tree string="Task Category">
+                    <field name="name"/>
+                    <field name="role"/>
+                    <field name="sequence"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_project_task_category" model="ir.actions.act_window">
+            <field name="name">Task Category</field>
+            <field name="res_model">project.task.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a category in the task pipeline.
+              </p>
+            </field>
+        </record>
+        <menuitem action="action_project_task_category" id="project_task_category_menu" name="Task Category" parent="project.menu_project_config"/>
+    </data>
+</openerp>

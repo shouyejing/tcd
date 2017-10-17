@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<!-- Registration Templates -->
+<template id="website_event.registration_template">
+    <div t-if="partner">
+        <meta name="robots" content="noindex, nofollow"/>
+        <form id="registration_form" class="form-horizontal" t-attf-action="/event/#{slug(event)}/partner/#{partner.id}/invitation/confirm" method="post" t-if="not invitation_answered">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3><span t-field="partner.firstname"> </span> <span t-field="partner.lastname"> </span></h3>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="answer" value="0" required="1"/>
+                          <span>
+                                        No
+                          </span>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="answer" value="1" required="1"/>
+                          <span>
+                                        Yes, alone
+                          </span>
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="answer" value="2" required="1"/>
+                          <span>
+                                        Yes, Accompanied by:
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" id="invitee_guest" style="display: none;">
+                  <div class="col-md-11 col-md-offset-1">
+                      <select class="col-md-2" name="guest_title">
+                          <option value="">Select a title</option>
+                          <option value="Miss">Ms</option>
+                          <option value="Mrs">Mrs</option>
+                          <option value="Mr">Mr</option>
+                      </select>
+                      <input class="col-md-3" name="guest_firstname"  placeholder="Firstname"/>
+                      <input type="text" class="col-md-3" name="guest_lastname"  placeholder="Lastname"/>
+                      <input type="email" class="col-md-4" name="guest_email"  placeholder="Email"/>
+                  </div>
+                </div>
+                <br/>
+                <div class="form-group">
+                  <div class="col-md-12">
+                      <textarea class="form-control" name="comments" rows="5" placeholder="Your comments"></textarea>
+                  </div>
+                </div>
+            </div>
+            <button type="submit" t-if="event.state == 'confirm'"
+                class="btn btn-primary btn-lg pull-right ">Send</button>
+            <div t-if="not event.state == 'confirm'" class="alert alert-info">
+                Event registration not yet started.
+                <t t-if="uid">
+                    <i class="fa fa-plus-circle"><a t-attf-href="/web#id=#{event.id}&amp;view_type=form&amp;model=event.event"> <em>Configure and Launch Event Registration</em></a></i>
+                </t>
+            </div>
+        </form>
+
+    </div>
+    <div t-if="invitation_answered">
+        We thank you for your answer!
+        <div t-if="invitation_answered.answer > 0">
+            We are looking forward to meeting you!
+        </div>
+        <div t-if="invitation_answered.answer == 0">
+            We hope to see you next time!
+        </div>
+    </div>
+</template>
+
+</data>
+</openerp>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record id="tcd_indicator_budget_tree_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.budget.tree</field>
+            <field name="model">tcd.indicator.budget</field>
+            <field name="context">{'search_default_group_indicator_id':1}</field>
+            <field name="arch" type="xml">
+                <tree string="Indicators" create="true" delete="true">
+                    <field name="indicator_id"/>
+                    <field name="date" interval="quarter"/>
+                    <field name="budget"/>
+                    <field name="actual"/>
+                    <field name="difference_in_percent"/>
+                    <field name="difference_in_cash"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tcd_indicator_budget_graph_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.budget.graph</field>
+            <field name="model">tcd.indicator.budget</field>
+            <field name="arch" type="xml">
+                <graph type="pivot">
+                    <field name="date" type="row"/>
+                    <field name="indicator_id" type="col"/>
+                    <field name="budget" type="measure"/>
+                    <field name="actual" type="measure"/>
+                    <field name="difference_in_percent" type="measure"/>
+                    <field name="difference_in_cash" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <record id="tcd_indicator_budget_pivot_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.budget.pivot</field>
+            <field name="model">tcd.indicator.budget</field>
+            <field name="arch" type="xml">
+                <pivot string="Indicators analysis">
+                    <field name="date" interval="month" type="col"/>
+                    <field name="indicator_id"/>
+                </pivot>
+            </field>
+        </record>
+        <record id="tcd_indicator_budget_search_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.budget.search</field>
+            <field name="model">tcd.indicator.budget</field>
+            <field name="arch" type="xml">
+                <search string="Indicators">
+                    <field name="indicator_id"/>
+                    <field name="date"/>
+                    <separator />
+                    <filter name="group_indicator_id" string="By Indicator" context="{'group_by': 'indicator_id'}"/>
+                    <filter name="group_year" string="By Year" context="{'group_by': 'date', 'interval': 'year'}"/>
+                    <filter name="group_quarter" string="By Quarter" context="{'group_by': 'date', 'interval': 'quarter'}"/>
+                    <filter name="group_month" string="By Month" context="{'group_by': 'date', 'interval': 'month'}"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</openerp>

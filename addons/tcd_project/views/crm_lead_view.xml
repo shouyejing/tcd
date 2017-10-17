@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="crm_lead_form_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads" />
+            <field name="arch" type="xml">
+                <field name="partner_name" position="after">
+                    <field name="website" widget="url"/>
+                </field>
+
+                <field name="tag_ids" position="after">
+                    <field name="opportunity_type" widget="selection"/>
+                    <field name="sector_ids" widget="many2many_tags"/>
+                    <field name="investment_type" widget="selection"/>
+                    <field name="investment_size"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="crm_lead_opportunity_form_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.opportunity.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="website" widget="url"/>
+                </field>
+
+                <field name="tag_ids" position="after">
+                    <field name="opportunity_type" widget="selection"/>
+                    <field name="sector_ids" widget="many2many_tags"/>
+                    <field name="investment_type" widget="selection"/>
+                    <field name="investment_size"/>
+                    <field name="general_conditions_accepted"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

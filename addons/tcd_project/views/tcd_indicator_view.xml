@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="tcd_indicators_view_form" model="ir.ui.view">
+            <field name="name">tcd.indicator.form</field>
+            <field name="model">tcd.indicator</field>
+            <field name="arch" type="xml">
+                <form string="Indicator">
+                    <header>
+                    </header>
+                    <sheet string="Indicator">
+                        <form string="Indicators">
+                            <group>
+                                <field name="name"/>
+                                <field name="project_id"/>
+                                <field name="total_budget"/>
+                                <field name="total_actual"/>
+                                <field name="rating" widget="selection"/>
+                            </group>
+                        </form>
+                        <notebook>
+                            <page string="Budgets">
+                                <field name="budget_ids">
+                                    <tree editable="bottom" create="true" delete="true">
+                                        <field name="date"/>
+                                        <field name="budget" sum="Total budget"/>
+                                        <field name="actual" sum="Total actual"/>
+                                        <field name="difference_in_percent" sum="Total Difference %"/>
+                                        <field name="difference_in_cash" sum="Total Difference €"/>
+                                    </tree>
+                                </field>
+                                <div class="oe_clear"/>
+                            </page>
+                         </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+         <record id="tcd_indicator_tree_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.tree</field>
+            <field name="model">tcd.indicator</field>
+            <field name="arch" type="xml">
+                <tree string="Indicators" create="true" delete="true">
+                    <field name="name"/>
+                    <field name="total_budget"/>
+                    <field name="total_actual"/>
+                    <field name="project_id" invisible="True"/>
+                </tree>
+            </field>
+        </record>
+        <record id="tcd_indicator_graph_view" model="ir.ui.view">
+            <field name="name">tcd.indicators.graph</field>
+            <field name="model">tcd.indicator</field>
+            <field name="arch" type="xml">
+                <graph type="pivot">
+                    <field name="name" type="col"/>
+                    <field name="project_id"/>
+                    <field name="total_budget" type="measure"/>
+                    <field name="total_actual" type="measure"/>
+                </graph>
+            </field>
+        </record>
+        <record id="tcd_indicator_search_view" model="ir.ui.view">
+            <field name="name">tcd.indicator.search</field>
+            <field name="model">tcd.indicator</field>
+            <field name="arch" type="xml">
+                <search string="Indicators">
+                    <field name="project_id"/>
+                    <field name="name"/>
+                    <field name="rating"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</openerp>

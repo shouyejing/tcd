@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_task_form_inherit" model="ir.ui.view">
+            <field name="name">tcd.project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="after">
+                    <field name="category_id" string="Menu"/>
+                </field>
+            </field>
+        </record>
+    </data>
+<!--
+    <data>
+        <record id="act_project_project_2_project_task_all" model="ir.actions.act_window">
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+        </record>
+    </data>
+-->
+
+</openerp>

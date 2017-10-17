@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="tcd.sector" id="sector_healthcare">
+            <field name="name">Health Care</field>
+        </record>
+        <record model="tcd.sector" id="sector_finances">
+            <field name="name">Finances</field>
+        </record>
+        <record model="tcd.sector" id="sector_it">
+            <field name="name">IT</field>
+        </record>
+        <record model="tcd.sector" id="sector_industry">
+            <field name="name">Industry</field>
+        </record>
+        <record model="tcd.sector" id="sector_telecoms">
+            <field name="name">Telecoms</field>
+        </record>
+        <record model="tcd.sector" id="sector_others">
+            <field name="name">Others</field>
+        </record>
+
+    </data>
+</openerp>

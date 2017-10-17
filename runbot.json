@@ -1,0 +1,12 @@
+{
+  "odoo": "9.0",
+  "addons": {
+    "path": ["addons", "addons-community/oca/partner-contact", "themes"],
+    "install": ["tcd_profile"]
+  },
+  "enterprise": {
+    "repo": "git@github.com:eezee-it/odoo-enterprise.git",
+    "branch": "9.0"
+  },
+  "without-demo": "theme_graphene"
+}

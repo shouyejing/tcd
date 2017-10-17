@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="event_invitee_view_form" model="ir.ui.view">
+            <field name="name">event.invitee.form</field>
+            <field name="model">event.invitee</field>
+            <field name="arch" type="xml">
+                <form string="Invitees">
+                    <group>
+                        <group>
+                            <field name="event_id"/>
+                            <field name="partner_id"/>
+                            <field name="answer"/>
+                            <field name="guest_firstname"/>
+                            <field name="guest_lastname"/>
+                            <field name="guest_email"/>
+                            <field name="comments"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+         <record id="event_invitee_view_list" model="ir.ui.view">
+            <field name="name">event.invitee.list</field>
+            <field name="model">event.invitee</field>
+            <field name="arch" type="xml">
+                <tree string="Invitees" create="true" delete="true">
+                    <field name="event_id"/>
+                    <field name="partner_id"/>
+                    <field name="create_date" String="Answered on"/>
+                    <field name="nbr_participants"  sum="Total participants" class="centered"/>
+                    <button type="object" icon="fa-trash-o" name="unlink"
+                            attrs="{'invisible': [('partner_id', '=', False)]}"/>
+                </tree>
+            </field>
+        </record>
+        <record id="event_invitee_view_search" model="ir.ui.view">
+            <field name="name">event.invitee.search</field>
+            <field name="model">event.invitee</field>
+            <field name="arch" type="xml">
+                <search string="Invitees">
+                    <field name="event_id"/>
+                    <field name="partner_id"/>
+                    <field name="answer"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_event_invitee" model="ir.actions.act_window">
+            <field name="name">TCD invitees</field>
+            <field name="res_model">event.invitee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Show the number of invitee
+                </p>
+            </field>
+        </record>
+
+        <!--<menuitem action="action_event_invitee" id="menu_action_view_invitee" parent="event_event" name="Invitees"/>-->
+    </data>
+</openerp>

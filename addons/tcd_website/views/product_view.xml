@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+		<!-- Product Public Categories -->
+		<record id="tcd_product_form_view" model="ir.ui.view">
+			<field name="name">tcd.product.form</field>
+			<field name="model">product.template</field>
+			<field name="inherit_id" ref="product.product_template_only_form_view" />
+
+            <field name="arch" type="xml">
+	            <xpath expr="//field[@name='currency_id']" position="after">
+	               <field name="name_generic"/>
+	               <field name="name_product"/>
+					<label for="image_generic"/>
+					<div name="image_generic">
+									<field name="image_generic"  widget="image" class="oe_avatar"/>
+					</div>
+
+
+	            </xpath>
+	            <xpath expr="//group[@name='description']" position="after">
+					<group name="Teasing">
+						<separator string="Description Teasing" colspan="4"/>
+						<field name="teasing_description" colspan="4" nolabel="1" placeholder="This note will be displayed on the website for public users."/>
+					</group>
+					<group name="Full Description">
+						<separator string="Description Full" colspan="4"/>
+						<field name="website_description" colspan="4" nolabel="1" placeholder="This note will be displayed on the website for club users."/>
+					</group>
+
+	            </xpath>
+            </field>
+		</record>
+    </data>
+</openerp>

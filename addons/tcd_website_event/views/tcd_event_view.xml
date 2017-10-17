@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="act_event_tcd_event_invitee" model="ir.actions.act_window">
+            <field name="name">Participants</field>
+            <field name="res_model">event.invitee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_event_id': active_id}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Show the number of participants
+                </p>
+            </field>
+        </record>
+        <record id="view_event_form_inherit" model="ir.ui.view">
+            <field name="name">tcd.event.view.inherit.form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="website_event.view_event_sale_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[1]/button[1]" position="after">
+                    <button class="oe_stat_button" type="action"
+                        name="%(act_event_tcd_event_invitee)d" icon="fa-users">
+                        <field string="Participants" name="invitee_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

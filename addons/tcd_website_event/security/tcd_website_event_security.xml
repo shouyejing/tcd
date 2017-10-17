@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.rule" id="res_partner_portal_public_rule">
+            <field name="domain_force"></field>
+        </record>
+
+    </data>
+</openerp>

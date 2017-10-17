@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="tcd_website_event_assets" inherit_id="website.assets_frontend" name="TCD Website Event Assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/tcd_website_event/static/src/js/tcd_website_event.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

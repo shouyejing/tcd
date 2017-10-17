@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="website.entrepreneurs" model="ir.ui.view">
+            <field name="name">Entrepreneurs</field>
+            <field name="type">qweb</field>
+            <field name="key">website.entrepreneurs</field>
+            <field name="website_id" ref="website.default_website"/>
+            <field name="arch" type="xml">
+                <t t-name="website.entrepreneurs">
+                  <t t-call="website.layout">
+                    <div id="wrap" class="oe_structure oe_empty">
+                      <section class="parallax s_parallax o_animate mb128 move_to_top mt0 oe_custom_bg oe_img_bg" data-scroll-background-offset="0" data-scroll-background-ratio="0.3" style="height: 600px; overflow: hidden; animation-play-state: paused; background-image: url(&quot;/tcd_website/static/img/entrepreneurs_header.png&quot;); background-attachment: scroll; background-position: 0px 228.3px;">
+                        <div>
+                          <div class="oe_structure"/>
+                        </div>
+                      </section>
+                      <section class="s_text_block_image_fw o_animate only-bg bg-white" style="animation-play-state: paused;">
+                        <div class="container">
+                          <div class="row">
+                            <div class="bg-white mt64 o_animable col-md-12 mb4">
+                              <h1 class="text-primary">You are considering a restructuration of your capital for funding your growth?</h1>
+                              <h4 class="text-primary">Our Club investors are interested in co-investing with us in such opportunities.</h4>
+                              <p>
+                                <span style="line-height: 1.4285;"/>
+                              </p>
+                              <p>
+                                <span style="background-color: rgb(255, 255, 255);">We facilitate convergence of objectives between investors and entrepreneurs. On the long term.</span>
+                              </p>
+                              <p>
+                                <span style="background-color: rgb(255, 255, 255);"> We support and implement applied governance processes whereby entrepreneurs and investors will foster same converging goals, knowledge and challenges. </span>
+                              </p>
+                              <p>
+                                <span style="background-color: rgb(255, 255, 255);"/>
+                              </p>
+                              <p>
+                                <span style="line-height: 1.4285;"/>
+                              </p>
+                              <p/>
+                              <p>&amp;nbsp;<strong style="line-height: 1.4285;"><a class="btn btn-success" href="/page/entrepreneurs-form" style="overflow: hidden; position: relative;">Apply now!</a></strong></p>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="parallax s_parallax bg-img-03" data-scroll-background-offset="-283.8" data-scroll-background-ratio="0.3" style="height: 208px; overflow: hidden; background-attachment: scroll; background-position: 0px -55.5px;">
+                        <div>
+                          <div class="oe_structure">
+                            <section class="s_title">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <h1 class="text-center" style="text-align: left;">
+                                      <span class="fa fa-check-circle" style=""/>
+                                      <font class="only-text color-white">Scor#It</font>
+                                    </h1>
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="s_text_block mt48 mb32">
+                        <div class="container">
+                          <div class="row"/>
+                          <div class="row">Scor#it is a connective tool allowing us to better serve your interests and testing the potential of connecting you with our Club Members.&amp;nbsp;</div>
+                          <div class="row"/>
+                          <div class="row">It will help us understanding the qualities of your venture, getting to know the team better, discovering the unique features of your company, and going deep into its governance.&amp;nbsp;</div>
+                          <div class="row"/>
+                          <div class="row">While the content of it will be treated confidentially, your detailed attention in filling the questionary will be a preliminary for a succesful meeting point.</div>
+                        </div>
+                      </section>
+                      <hr class="s_separator"/>
+                    </div>
+                  </t>
+                </t>
+            </field>
+        </record>
+
+        <record id="website.entrepreneurs-form" model="ir.ui.view">
+            <field name="name">Entrepreneurs-Form</field>
+            <field name="type">qweb</field>
+            <field name="key">website.entrepreneurs-form</field>
+            <field name="website_id" ref="website.default_website"/>
+            <field name="arch" type="xml">
+                <t t-name="website.entrepreneurs-form">
+                  <t t-call="website.layout">
+                    <div id="wrap" class="oe_structure oe_empty">
+                      <div class="container">
+                        <h1>Entrepreneurs Application&amp;nbsp;</h1>
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="oe_structure">
+                              <div>
+                                <p>Thank you for your interest in TheClubDeal! </p>
+                                <p>Kindly fill the form below.</p>
+                                <p>We'll get back to you very soon with our scor#it survey. It will allow us to have a first level of understanding of your needs</p>
+                              </div>
+                              <form action="/website_form/" method="post" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-model_name="crm.lead" data-success_page="" _lpchecked="1">
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="contact_name">Your name &amp;nbsp;*</label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="contact_name" required="1"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="email_from"> Email *</label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="email" class="form-control o_website_form_input" name="email_from" required="1"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="phone"> Phone</label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="phone"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="company_id"> Company </label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="partner_name"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="website">
+                                    Website
+                                </label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="website"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field o_website_form_required o_website_form_field_hidden">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="name">Subject&amp;nbsp;</label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="name" value="New entrepreneur"/>
+                                  </div>
+                                </div>
+                                <div class="form-group form-field o_website_form_field_hidden">
+                                      <div class="col-md-3 col-sm-4 text-right">
+                                      </div>
+                                      <div class="col-md-7 col-sm-8">
+                                        <input type="text" class="o_website_form_input" name="team_id" value="4"/>
+                                      </div>
+                                </div>
+                                <div class="form-group form-field">
+                                  <div class="col-md-3 col-sm-4 text-right">
+                                    <label class="control-label" for="description">Your Question&amp;nbsp;</label>
+                                  </div>
+                                  <div class="col-md-7 col-sm-8">
+                                    <textarea class="form-control o_website_form_input" name="description"/>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                    <button class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text" style="position: relative; overflow: hidden;">Send</button>
+                                    <span id="o_website_form_result"/>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </t>
+                </t>
+            </field>
+        </record>
+
+
+        <record id="menu_entrepreneurs" model="website.menu">
+            <field name="name">Entrepreneurs</field>
+            <field name="url" eval="'/page/entrepreneurs'"/>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">40</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record>
+  </data>
+
+</openerp>

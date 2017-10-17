@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Load English language automatically-->
+        <function model="base.language.install" name="install_language">
+            <value>en_US</value>
+        </function>
+
+        <!-- Load French language automatically-->
+        <function model="base.language.install" name="install_language">
+            <value>fr_BE</value>
+        </function>
+
+        <function model="website.config.settings" name="update_website_settings"/>
+
+        <record id="action_website_stor_it_page" model="ir.actions.act_url">
+            <field name="name">Stor#it Page</field>
+            <field name="url">/stor_it</field>
+            <field name="target">self</field>
+        </record>
+
+    </data>
+</openerp>

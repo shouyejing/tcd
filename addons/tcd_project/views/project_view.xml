@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="act_project_tcd_clubbers" model="ir.actions.act_window">
+            <field name="name">TCD clubbers</field>
+            <field name="res_model">tcd.clubbers</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_project_id': active_id}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Show the number of clubber
+                </p>
+            </field>
+        </record>
+
+        <record id="action_project_tcd_indicators" model="ir.actions.act_window">
+            <field name="name">TCD indicators</field>
+            <field name="res_model">tcd.indicator.budget</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="context">{'search_default_project_id': active_id}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Show the number of indicators
+                </p>
+            </field>
+        </record>
+
+        <record id="edit_project_inherit" model="ir.ui.view">
+            <field name="name">tcd.project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[1]/button[1]" position="after">
+                    <button class="oe_stat_button" type="action"
+                        name="%(act_project_tcd_clubbers)d" icon="fa-money">
+                        <field string="Clubbers" name="clubber_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button" type="action"
+                        name="%(action_project_tcd_indicators)d" icon="fa-sliders">
+                        <field string="Indicators" name="indicator_average" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <xpath expr="//sheet/div[2]" position="before">
+                   <field name="image" widget='image' class="oe_avatar oe_inline" nolabel="1"/>
+                </xpath>
+                <xpath expr="//notebook/page[1]" position="before">
+                    <page string="Description">
+                        <field name="description" type="html"/>
+                        <div class="oe_clear"/>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook/page[2]" position="after">
+                    <page string="Clubbers">
+                        <field name="clubber_ids">
+                            <tree>
+                                <field name="partner_id"/>
+                                <field name="investment"/>
+                            </tree>
+                        </field>
+                        <div class="oe_clear"/>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook/page[3]" position="after">
+                    <page string="Indicators">
+                        <field name="indicator_ids">
+                            <tree create="true">
+                                <field name="name"/>
+                                <field name="project_id"/>
+                                <field name="total_budget" sum="total_of_total_budget"/>
+                                <field name="total_actual" sum="total_of_total_actual"/>
+                            </tree>
+                        </field>
+                        <div class="oe_clear"/>
+                    </page>
+                </xpath>
+                <div name="options_active" position="after">
+                    <div>
+                        <label for="tag_ids" class="oe_inline oe_edit_only"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</openerp>

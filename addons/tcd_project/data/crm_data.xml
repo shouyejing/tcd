@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="crm.team" id="team_investor_sales">
+            <field name="name">Investor Sales</field>
+            <field name="use_leads">True</field>
+        </record>
+
+        <record model="crm.team" id="team_entrepreneurs_sales">
+            <field name="name">Entrepreneurs Sales</field>
+            <field name="use_leads">True</field>
+        </record>
+
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+          <value>crm.lead</value>
+          <value eval="[
+            'website',
+            'opportunity_type',
+            'investment_type',
+            'investment_size',
+            'sector_ids',
+            'team_id',
+            ]"/>
+        </function>
+    </data>
+</odoo>

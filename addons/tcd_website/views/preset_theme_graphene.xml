@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Deactivate 'Postcard' layout-->
+        <record id="theme_graphene.graphene_option_layout_postcard" model="ir.ui.view">
+            <field name="active" eval="False"/>
+        </record>
+
+        <!-- Activate 'Full width' layout-->
+        <record id="theme_graphene.graphene_option_layout_fullwidth" model="ir.ui.view">
+            <field name="active">True</field>
+        </record>
+
+      </data>
+</openerp>
+

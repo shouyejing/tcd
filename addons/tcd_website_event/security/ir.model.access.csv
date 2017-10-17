@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_event_invitee_user,access.event.invitee.user,model_event_invitee,base.group_user,1,1,1,1
+access_event_invitee_all,access.event.invitee.all,model_event_invitee,,1,1,1,0

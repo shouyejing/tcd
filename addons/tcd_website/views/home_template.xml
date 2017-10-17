@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="homepage_header_section">
+            <section class="parallax s_parallax_slider o_animate bg-img-06" data-scroll-background-offset="-43.199999999999996" data-scroll-background-ratio="0.3" style="animation-play-state: paused; background-attachment: scroll; background-position: 0px 76.2px;">
+                <div class="oe_structure">
+                  <div class="carousel quotecarousel slide mb0" id="myCarousel2">
+                    <ol class="carousel-indicators mb0">
+                      <li class="active" data-slide-to="0" data-target="#myCarousel2"/>
+                      <li data-slide-to="1" data-target="#myCarousel2"/>
+                      <li data-slide-to="2" data-target="#myCarousel2"/>
+                      <li data-slide-to="3" data-target="#myCarousel2"/>
+                      <li data-slide-to="4" data-target="#myCarousel2"/>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="item text_only active">
+                        <div class="container">
+                          <div class="content">
+                            <div class="row">
+                              <blockquote class="mt48 mb16 col-md-8 col-md-offset-2">
+                                <p class="em2" style="text-align: center;">Simplicity is the ultimate sophistication</p>
+                                <p class="em2" style="text-align: center;">
+                                  <br/>
+                                </p>
+                              </blockquote>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item text_only">
+                        <div class="container">
+                          <div class="content">
+                            <div class="row">
+                              <blockquote class="mt48 mb16 col-md-8 col-md-offset-2">
+                                <p class="em2 o_animate" style="text-align: center; animation-name: none; visibility: visible; animation-play-state: paused;">Governance is about knowing, measuring, facilitating</p>
+                              </blockquote>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item text_only">
+                        <div class="container">
+                          <div class="content">
+                            <div class="row">
+                              <blockquote class="mt48 mb16 col-md-8 col-md-offset-2">
+                                <p class="em2" style="text-align: center;">Intuition is necessary, process is compulsory</p>
+                              </blockquote>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item text_only">
+                        <div class="container">
+                          <div class="content">
+                            <div class="row">
+                              <blockquote class="mt48 mb16 col-md-8 col-md-offset-2">
+                                <p class="em2 o_animate" style="text-align: center; animation-name: none; visibility: visible; animation-play-state: paused;">Clubs add Value by uniting skillsand smart energy</p>
+                              </blockquote>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item text_only">
+                        <div class="container">
+                          <div class="content">
+                            <div class="row">
+                              <blockquote class="mt48 mb16 col-md-8 col-md-offset-2">
+                                <p class="em2 o_animate" style="text-align: center; animation-name: none; visibility: visible; animation-play-state: paused;">Deal is the start, Club is the tool, Satisfaction is the goal.</p>
+                              </blockquote>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="website.homepage" name="Homepage" page="True" priority="29">
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                  <section class="s_title">
+                    <div class="container">
+                      <div class="row"/>
+                    </div>
+                  </section>
+                  <t t-call="tcd_website.homepage_header_section"/>
+                  <section class="s_text_image o_animate mt0 mb0" style="height: 360px; overflow: hidden; animation-play-state: paused;">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-8 mb92 mt64">
+                          <h3/>
+                          <h3/>
+                          <h1/>
+                          <h1>Direct Equity with Smart Money&amp;nbsp;</h1>
+                          <h5>At TheClubDeal.com, we link Investors and Entrepreneurs around promising investment opportunities. For each of these, we&amp;nbsp;will invest ourselves and co-invest with a selected number of investors.</h5>
+                          <p/>
+                          <div>
+                            <h5>We add value by processing strong applied governance principles, when selecting and managing our investments,&amp;nbsp;and by gathering the necessary skills to successfully grow the businesses and real-estate projects we co-invest in.</h5>
+                          </div>
+                          <p/>
+                          <p/>
+                        </div>
+                        <div class="col-md-4 mt128 mb0">
+                          <img class="img img-responsive mb16 o_animate" data-pin-nopin="true" src="/tcd_website/static/img/tcd_diagram.jpg" style="transform: translateX(4.4%) translateY(-21.6%) scaleX(0.98) scaleY(0.95); animation-play-state: paused;"/>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="s_animated_boxes row o_animate" style="animation-play-state: paused;">
+                    <div class="col-sm-4 item col-md-6 mb48 bg-info">
+                      <div class="v-align preserve3d" style="display: block;">
+                        <h3>I am an Entrepreneur</h3>
+                        <p class="o_visible">...and I want to scale up!</p>
+                        <a class="btn btn-primary btn-lg" href="/page/entrepreneurs/" style="overflow: hidden; position: relative;"> Learn how! </a>
+                        <div class="oe_structure"/>
+                      </div>
+                      <div class="slide bg-delta" style="display: none; background-color: rgb(204, 204, 204);">
+                        <div class="v-align">
+                          <h3/>
+                          <ul>
+                            <li style="text-align: left;">We'll help you to find the most appropriate financial partner</li>
+                            <li style="text-align: left;">We'll invest along side our Club Members to ensure alignment of interest</li>
+                            <li style="text-align: left;">Our Investment hub will help us to structure our relationship, offer transparent governance and dramatically decrease the running costs</li>
+                          </ul>
+                          <a class="btn btn-primary btn-lg" href="/page/entrepreneurs/" style="overflow: hidden; position: relative;">
+                            <strong>Learn how!</strong>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 item col-md-6 bg-success">
+                      <div class="v-align preserve3d" style="display: block;">
+                        <h3>I am an Investor</h3>
+                        <p class="o_visible">... and I want a true partnership!</p>
+                        <a class="btn btn-primary btn-lg" href="/page/investors-form" style="overflow: hidden; position: relative;"> Join the Club now! </a>
+                      </div>
+                      <div class="slide bg-delta" style="display: none; background-color: rgb(204, 204, 204);">
+                        <div class="v-align">
+                          <ul>
+                            <li style="text-align: left;">We'll present you Club Deals that are aligned to your investment strategy</li>
+                            <li style="text-align: left;">Our Club Members cumulate financial power and professional expertize to leverage your investments with brains and coins</li>
+                            <li style="text-align: left;">Our investment hub offers you transparent governance, live information and dramatically decrease the running costs</li>
+                          </ul>
+                          <a class="btn btn-primary btn-lg" href="/page/investors-form" style="overflow: hidden; position: relative;">
+                            <strong>Join the Club now!</strong>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </t>
+        </template>
+
+    </data>
+</openerp>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="stor_it_menu" inherit_id="website.layout" name="Stor#it Menu">
+            <xpath expr="//li[contains(@id, 'o_logout')]" position="before">
+                <li id="o_stor_it" groups="tcd_project.tcd_group_clubber">
+                    <a t-attf-href="/stor_it" role="menuitem">Stor#it</a>
+                </li>
+            </xpath>
+        </template>
+
+        <template id="project_block">
+            <t t-set="clubber" t-value="project_clubber.get(project.id)" />
+            <div class="col-sm-9 col-md-9 col-lg-9 tcd-del-left-padding">
+                <div class="col-sm-12 col-md-12 col-lg-12 tcd-del-left-padding">
+                    <strong>
+                        <span t-field="project.name" style="font-size: large"/>
+                    </strong>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 tcd-del-left-padding">
+                    <div>
+                        <t t-foreach="project.tag_ids" t-as="tag">
+                            <span t-field="tag.name" class="tcd-project-tag"/><br/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 tcd-del-left-padding">
+                    <span>Amount invested:
+                        <span t-field="clubber.investment" t-field-options='{"widget": "monetary", "display_currency": "clubber.partner_id.sudo().company_id.currency_id"}'/>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 tcd-padding-0">
+                <div t-attf-id="gauge-project-#{project.id}" t-attf-data-indicator-average="#{project.indicator_average}" class="project-indicator-average"></div>
+            </div>
+
+        </template>
+
+        <template id="stor_it_template" name="Stor#it" page="True" >
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <section class="s_title">
+                        <div class="container">
+                            <div class="row"/>
+                        </div>
+                      </section>
+                    <t t-call="tcd_website.homepage_header_section"/>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 tcd-padding-0 tcd-margin-bottom-15">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <h2>Stor#it</h2>
+                                </div>
+
+                                <t t-foreach="projects" t-as="project">
+                                    <div class="project-link">
+                                        <div class="col-sm-3 col-md-3 col-lg-3 tcd-project" t-attf-onclick="location.href='/stor_it/projects/{{ slug(project) }}'">
+                                            <t t-call="tcd_website.project_block" />
+                                        </div>
+                                    </div>
+                                </t>
+
+                                <t t-if="not projects">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <h4 class="text-muted">No projects</h4>
+                                    </div>
+                                </t>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </t>
+        </template>
+
+        <template id="project_template" name="Project Template" page="True" >
+            <t t-call="website.layout">
+                <div id="wrap" class="oe_structure oe_empty">
+                    <section class="s_title">
+                        <div class="container">
+                            <div class="row"/>
+                        </div>
+                      </section>
+                    <div class="container tcd-del-padding-right">
+                        <div class="row">
+                            <div class="col-md-12 tcd-del-left-padding tcd-margin-bottom-15">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div t-attf-onclick="location.href='/stor_it/'" class="tcd-cursor-pointer">
+                                        <h2>Stor#it</h2>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class="col-sm-4 col-md-3 col-lg-2">
+                                            <ul class="nav navlist tcd-project-panel">
+                                                <t t-foreach="projects" t-as="project">
+                                                    <t t-if="project == current_project">
+                                                        <li class="nav-header tcd-padding-15"  data-toggle="collapse" t-attf-data-target="#project-{{ project.id }}">
+                                                            <strong>
+                                                                <span class="caret tcd-del-left-margin"/>
+                                                                <a t-attf-href="/stor_it/projects/{{ slug(project) }}" style="text-decoration: none;"><span t-field="project.name"></span></a>
+                                                            </strong>
+                                                        </li>
+                                                        <ul class="nav nav-list collapse in" t-attf-id="project-{{ project.id }}">
+                                                            <t t-foreach="project_tasks_categories.get(project.id)" t-as="task_category">
+                                                                <li t-att-class="'tcd-project-panel-subelement element-selected' if task_category == current_category else 'tcd-project-panel-subelement'" >
+                                                                    <a t-attf-href="/stor_it/projects/{{ slug(project) }}/{{ slug(task_category) }}"><span t-field="task_category.name"/></a>
+                                                                </li>
+                                                            </t>
+                                                                <li t-att-class="'tcd-project-panel-subelement element-selected' if indicators_menu else 'tcd-project-panel-subelement'">
+                                                                    <span t-if="current_indicator">
+                                                                        <a t-attf-href="/stor_it/projects/{{ slug(project) }}/indicators/{{ slug(current_indicator)}}">Project Indicators</a>
+                                                                    </span>
+                                                                    <span t-if="not current_indicator and project.indicator_ids">
+                                                                        <a t-attf-href="/stor_it/projects/{{ slug(project) }}/indicators/{{ slug(project.indicator_ids[0]) }}">Project Indicators</a>
+                                                                    </span>
+                                                                </li>
+                                                            <li t-att-class="'tcd-project-panel-subelement element-selected' if club_members_menu else 'tcd-project-panel-subelement'">
+                                                                <a t-attf-href="/stor_it/projects/{{ slug(project) }}/club_members">Club members</a>
+                                                            </li>
+                                                        </ul>
+                                                    </t>
+                                                    <t t-if="project != current_project">
+                                                        <li class="nav-header">
+                                                            <a t-attf-href="/stor_it/projects/{{ slug(project) }}/"><strong><span t-field="project.name"/></strong></a>
+                                                        </li>
+                                                    </t>
+                                                </t>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-8 col-md-9 col-lg-10 tcd-project-panel-info tcd-padding-0">
+                                            <t t-raw="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </t>
+        </template>
+
+        <template id="project_task_category_template" name="Project Task Category Template" page="True">
+            <t t-call="tcd_website.project_template">
+                <div class="row tcd-margin-15">
+                    <t t-foreach="tasks" t-as="task">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h3><span t-field="task.name"></span></h3>
+                            <t t-if="not task.attachment_ids" >
+                                <h4 class="text-muted">No documents</h4>
+                            </t>
+                            <span t-if="task.description" t-field="task.description"></span>
+                        </div>
+
+                        <t t-foreach="task.attachment_ids" t-as="document">
+                            <div class="col-sm-4 col-md-4 col-lg-4 tcd-attachment-block">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <a class="o_image" target="_blank" t-att-data-mimetype="document.mimetype"
+                                       t-attf-href="/web/content/#{document.id}?download=1"
+                                       t-attf-data-src="/web/image/#{document.id}/100x80">
+                                    </a>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <strong><span class="o_attachment_name" t-field="document.name"/></strong>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <strong><span>Upload date: </span></strong><span class="o_attachment_name" t-field="document.create_date" t-field-options='{"format": "dd/MM/yyy"}'/>
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="tcd_website.gauges_template" name="Project gauges">
+            <div t-if="current_project.indicator_ids" class="row tcd-margin-15 tcd-project-indicators">
+                <t t-foreach="current_project.indicator_ids" t-as="indicator">
+                    <div  t-att-class="'element-selected col-xs-12 col-sm-6 col-md-4 col-lg-2' if indicator == current_indicator else 'col-xs-12 col-sm-6 col-md-4 col-lg-2'" >
+                        <a t-attf-href="/stor_it/projects/{{ slug(current_project) }}/indicators/{{ slug(indicator) }}" style="text-decoration: none;">
+                            <div t-attf-id="gauge-indicator-#{indicator.id}"
+                                 t-attf-data-indicator-rating="#{indicator.rating}"
+                                 t-attf-data-indicator-rating-label="#{indicator_labels.get(indicator.rating, '')}"
+                                 t-attf-data-indicator-name="#{indicator.name}"
+                                 class="indicator-rating">
+                            </div>
+                        </a>
+                    </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="project_general_info_template" name="Project General Info Template" page="True">
+            <t t-call="tcd_website.project_template">
+                <t t-call="tcd_website.gauges_template"></t>
+                <div class="row tcd-margin-15">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-sm-9 col-md-9 col-lg-9 tcd-del-left-padding">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                 <h1><span t-field="current_project.name"/></h1>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h2><span>Description: </span></h2>
+                                <span t-field="current_project.description"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 tcd-margin-top-15">
+                            <span itemprop="image" class="img-responsive" t-field="current_project.image" t-field-options='{"widget": "image", "class": "img-thumbnail"}'/>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-sm-12 col-md-12 col-lg-12 tcd-del-left-padding">
+                                <h2><span>History: </span></h2>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 tcd-project-history">
+                                <t t-foreach="current_project.sudo().message_ids" t-as="message">
+                                    <t t-if="message.body">
+                                        Note by <strong><span t-field="message.author_id.name"></span></strong>
+                                        <span t-if="message.subject"><span t-field="message.subject">:</span></span>
+                                        <span t-if="message.body" t-field="message.body"> </span>
+                                    </t>
+                               </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="project_club_members_template" name="Project Club Members Template" page="True">
+            <t t-call="tcd_website.project_template">
+                <div class="row tcd-margin-15 tcd-padding-0-15">
+                    <h2>Club Members</h2>
+                    <table class="table table-striped table-bordered tcd-clubbers-table">
+                        <thead>
+                            <tr>
+                                <td>Club Members</td>
+                                <td>Role</td>
+                                <td>Amount invested</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="current_project.clubber_ids" t-as="clubber">
+                            <tr>
+                                <td><span t-field="clubber.partner_id.sudo().name"/></td>
+                                <td><span t-field="clubber.role"/></td>
+                                <td><span t-field="clubber.investment" t-field-options='{"widget": "monetary", "display_currency": "clubber.partner_id.sudo().company_id.currency_id"}'/></td>
+                            </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="project_indicators_template" name="Project Indicators Template" page="True">
+            <t t-call="tcd_website.project_template">
+                <div class="row tcd-margin-15 tcd-padding-0-15">
+                    <h2>Indicators</h2>
+                    <table class="table table-striped table-bordered tcd-clubbers-table">
+                        <thead>
+                            <tr>
+                                <td>Indicator</td>
+                                <td>Date</td>
+                                <td>Budget</td>
+                                <td>Actual</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="indicators" t-as="indicator">
+                            <tr>
+                                <td><span t-field="indicator.indicator_id.name"/></td>
+                                <td><span t-field="indicator.date"/></td>
+                                <td><span t-field="indicator.budget" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                                <td><span t-field="indicator.actual" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                            </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <div id="output"></div>
+                </div>
+            </t>
+        </template>
+
+        <template id="project_indicator_details_template" name="Project Indicator Details Template" page="True">
+            <t t-call="tcd_website.project_template">
+                <div class="row tcd-margin-15 tcd-padding-0-15">
+                    <h2>Indicator details: </h2>
+                    <t t-call="tcd_website.gauges_template"></t>
+                    <h3><span t-field="current_indicator.name"/></h3>
+                    <div class="row">
+                        <div id="chart" style="margin-bottom:40px;">
+                            <t t-foreach="indicators" t-as="indicator">
+                                <div class="columns" t-attf-data-date="#{indicator.date}" t-attf-data-s1="#{indicator.budget}" t-attf-data-s2="#{indicator.actual}"/>
+                            </t>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-bordered tcd-clubbers-table">
+                        <thead>
+                            <tr>
+                                <td>Date</td>
+                                <td>Budget</td>
+                                <td>Actual</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="indicators" t-as="indicator">
+                                <tr>
+                                    <td><span t-field="indicator.date"/></td>
+                                    <td><span t-field="indicator.budget" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                                    <td><span t-field="indicator.actual" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+<!--
+                    <div class="row">
+                        <div class="col">
+                            <div id="info"></div>
+                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                              Launch demo modal
+                            </button>
+                            <button name="update_func" type="object"
+                            string="refresh" icon="gtk-refresh">Update</button>
+                       </div>
+                    </div>
+-->
+                </div>
+            </t>
+        </template>
+        <template id="project_indicator_details_template2" name="Project Indicator Details Template2" page="True">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">times</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </template>
+
+    </data>
+</openerp>

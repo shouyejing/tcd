@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+  <data>
+    <template id="mystyle" name="My style" inherit_id="website.assets_frontend">
+        <xpath expr="link[last()]" position="after">
+            <link href="/theme_tcd/static/less/style.less" rel="stylesheet" type="text/less"/>
+        </xpath>
+    </template>
+    <template id="theclubdeal_frontend_js" inherit_id="website.assets_frontend" name="My Js Frontend" active="True">
+      <xpath expr="script[last()]" position="after">
+        <script type="text/javascript" src="/theme_tcd/static/js/theclubdeal.frontend.js" />
+      </xpath>
+    </template>
+  </data>
+</openerp>
