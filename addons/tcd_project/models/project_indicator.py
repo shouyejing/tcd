@@ -20,6 +20,11 @@
 ##############################################################################
 from openerp import models, fields, api
 
+#Import logger
+import logging, json
+#Get the logger
+_logger = logging.getLogger(__name__)
+
 INDICATOR_RATINGS = [
     ('0', 'Very bad'),
     ('1', 'Bad'),
@@ -27,6 +32,15 @@ INDICATOR_RATINGS = [
     ('3', 'Good'),
     ('4', 'Very Good'),
 ]
+INDICATOR_RATINGS_DICT = {
+    '0': 'Very bad',
+    '1': 'Bad',
+    '2': 'Sufficient',
+    '3': 'Good',
+    '4': 'Very Good',
+
+}
+
 
 
 class ProjectIndicator(models.Model):
@@ -34,6 +48,7 @@ class ProjectIndicator(models.Model):
 
     name = fields.Char(string="Name", required=True)
     rating = fields.Selection(INDICATOR_RATINGS, required=True)
+    rating_label = fields.Char(string="Rating Label", compute="_get_rating_label")
     project_id = fields.Many2one('project.project', string="Project",
                                  required=True)
     budget_ids = fields.One2many(
@@ -55,3 +70,8 @@ class ProjectIndicator(models.Model):
                     total_actual += budget.actual
             indicator.total_budget = total_budget
             indicator.total_actual = total_actual
+
+    @api.one
+    def _get_rating_label(self):
+        _logger.info("Rating: " + str(INDICATOR_RATINGS_DICT[self.rating]))
+        self.rating_label = str(INDICATOR_RATINGS_DICT[self.rating])

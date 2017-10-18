@@ -11,7 +11,6 @@
             <field name="arch" type="xml">
 	            <xpath expr="//field[@name='currency_id']" position="after">
 	               <field name="name_generic"/>
-	               <field name="name_product"/>
 					<label for="image_generic"/>
 					<div name="image_generic">
 									<field name="image_generic"  widget="image" class="oe_avatar"/>

@@ -36,7 +36,6 @@ def isodd(x):
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    name_product = fields.Char('Name Product', index=True, translate=True)
     name_generic = fields.Char('Name Generic', index=True, translate=True)
     teasing_description = fields.Html('Website Teasing Description', sanitize_attributes=False, translate=html_translate)
 
@@ -84,8 +83,3 @@ class ProductTemplate(models.Model):
             except binascii.Error:
                 print "no correct base64"
 
-    @api.one
-    @api.depends("name_product","name_generic")
-    def _calculate_name(self):
-        _logger.info("current uid: " + str(self.env.uid))
-        self.name = self.name_product if self.env.uid and self.env.uid !=3 else self.name_generic

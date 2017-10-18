@@ -182,8 +182,8 @@
                     <div  t-att-class="'element-selected col-xs-12 col-sm-6 col-md-4 col-lg-2' if indicator == current_indicator else 'col-xs-12 col-sm-6 col-md-4 col-lg-2'" >
                         <a t-attf-href="/stor_it/projects/{{ slug(current_project) }}/indicators/{{ slug(indicator) }}" style="text-decoration: none;">
                             <div t-attf-id="gauge-indicator-#{indicator.id}"
+                                 t-attf-data-indicator-rating-label="#{indicator.rating_label}"
                                  t-attf-data-indicator-rating="#{indicator.rating}"
-                                 t-attf-data-indicator-rating-label="#{indicator_labels.get(indicator.rating, '')}"
                                  t-attf-data-indicator-name="#{indicator.name}"
                                  class="indicator-rating">
                             </div>

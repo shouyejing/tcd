@@ -325,7 +325,7 @@
             <field name="name">Investors</field>
             <field name="url" eval="'/page/investors'"/>
             <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">45</field>
+            <field name="sequence" type="int">3</field>
             <field name="website_id" ref="website.default_website"/>
         </record>
   </data>

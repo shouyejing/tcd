@@ -12,10 +12,23 @@
         </xpath>
 
         <xpath expr="//a[@itemprop='name']" position="replace">
-            <div class="oe_product_image">
                 <a itemprop="name" t-att-href="keep('/shop/product/%s' % product.id, page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-field="product.name"  t-if="not user_id.partner_id.name == 'Public user'"/>
                 <a itemprop="name" t-att-href="keep('/shop/product/%s' % product.id, page=(pager['page']['num'] if pager['page']['num']&gt;1 else None))" t-field="product.name_generic"  t-if="user_id.partner_id.name == 'Public user'"/>
-            </div>
+        </xpath>
+        <xpath expr="//div[@itemprop='offers']" position="replace">
+            <t t-if="product.website_price > 0">
+                <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer" class="product_price" t-if="product.product_variant_ids">
+                    <b>
+                        <t t-if="(compute_currency(product.lst_price) - product.website_price ) &gt; 0.01  and website.get_current_pricelist().discount_policy=='without_discount'">
+                            <del class="text-danger mr8" style="white-space: nowrap;" t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}" />
+                        </t>
+
+                        <span t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-esc="product.website_price" />
+                        <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name" />
+                    </b>
+                </div>
+            </t>
         </xpath>
 
     </template>
@@ -112,7 +125,8 @@
                                 </t>
                             </p>
                             <hr />
-                            <p class="text-muted">
+
+                            <p class="text-muted" t-if="user_id.partner_id.name == 'Public user'">
                                 <a t-att-href="keep('/page/catalog-form/%s' % product.id)" class="btn btn-primary">Click Here</a> to get the detailed prospectus
                             </p>
                             <p class="text-muted">
@@ -131,8 +145,22 @@
     </template>
 
     <template id="tcd_product_price" name="TCD Product Price" inherit_id="website_sale.product_price">
-        <xpath expr="//*[contains(@class,'oe_default_price')]" position="before">
-            <div>Amount raised:</div>
+        <xpath expr="//*[contains(@class,'oe_price_h4')]" position="replace">
+          <h4 class="oe_price_h4 css_editable_mode_hidden">
+            <t t-if="product.website_public_price > 0">
+                  <div>Amount raised:</div>
+                  <span class="text-danger oe_default_price" style="text-decoration: line-through; white-space: nowrap;"
+                    t-esc="compute_currency(product.website_public_price)" t-options="{'widget': 'monetary', 'display_currency': website.get_current_pricelist().currency_id, 'from_currency': website.currency_id}" t-att-style="'text-decoration: line-through; white-space: nowrap; ' + '' if (compute_currency(product.lst_price) - product.website_price) &gt; 0.01 and website.get_current_pricelist().discount_policy == 'without_discount' else 'display: none;'"
+                  />
+                  <b class="oe_price" style="white-space: nowrap;" t-esc="product.website_price" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                  <span itemprop="price" style="display:none;" t-esc="product.website_price"/>
+                  <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+            </t>
+            <t t-else="">
+                <div><strong>Amount undisclosed</strong></div>
+            </t>
+          </h4>
+
         </xpath>
     </template>
 

@@ -140,7 +140,7 @@ class TCDWebsite(http.Controller):
     @http.route('/stor_it/projects/<model("project.project"):project>',
                 type='http', auth="user", website=True, multilang=True)
     def project(self, project):
-        _logger.debug("Use _logger.debug for debugging purposes, nothing else ")
+        _logger.info("Use _logger.debug for debugging purposes, nothing else ")
         user = request.env.user
         clubbers = self.get_clubbers(user)
         projects = self.get_projects(clubbers)
@@ -203,13 +203,14 @@ class TCDWebsite(http.Controller):
         indicators = self.get_indicator_details(indicator)
         projects = self.get_projects(clubbers)
         indicator_labels = self.get_indicator_labels()
+        _logger.info("Indicator Labels: " + repr(indicator.rating_label))
 
         project_tasks_categories = self.get_project_tasks_categories(clubbers)
         values = {
             'projects': projects,
             'current_project': project,
             'current_indicator': indicator,
-            'indicator_labels': indicator_labels,
+            'indicator_labels': indicator.rating_label,
             'project_tasks_categories': project_tasks_categories,
             'indicators_menu': True,
             'indicators': indicators,
@@ -259,7 +260,6 @@ class TCDWebsite(http.Controller):
         '/page/catalog-form/<model("product.template"):product>/',
         type='http', auth="public", website=True, multilang=True)
     def catalog_form(self, product):
-        _logger.info("Current product: " + str(product.id))
         values = {
             'product': product,
         }

@@ -185,7 +185,7 @@
             <field name="name">Entrepreneurs</field>
             <field name="url" eval="'/page/entrepreneurs'"/>
             <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">40</field>
+            <field name="sequence" type="int">2</field>
             <field name="website_id" ref="website.default_website"/>
         </record>
   </data>
