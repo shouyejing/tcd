@@ -244,10 +244,12 @@ class TCDWebsite(http.Controller):
                 task_category.role not in ['board', 'investor']:
             return request.render("website.403")
 
+        current_indicator = project.indicator_ids[0] if project.indicator_ids else None
+
         values = {
             'projects': projects,
             'current_project': project,
-            'current_indicator': project.indicator_ids[0],
+            'current_indicator': current_indicator,
             'current_category':  task_category,
             'project_tasks_categories': project_tasks_categories,
             'tasks': tasks,
