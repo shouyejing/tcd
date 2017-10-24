@@ -8,7 +8,7 @@
                 <script type="text/javascript" src="/tcd_website/static/lib/js/pivot.js"></script>
                 <script type="text/javascript" src="/tcd_website/static/lib/js/jquery.jqplot.min.js"></script>
                 <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.barRenderer.js"></script>
-                <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.CategoryAxisRenderer.js"></script>
+                <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.category.js"></script>
                 <script type="text/javascript" src="/tcd_website/static/lib/js/jqplot.EnhancedLegendRenderer.js"></script>
                 <script type="text/javascript" src="/tcd_website/static/src/js/gauges.js"></script>
                 <script type="text/javascript" src="/tcd_website/static/src/js/general.js"></script>
