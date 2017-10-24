@@ -26,9 +26,13 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12 tcd-del-left-padding">
-                    <span>Amount invested:
-                        <span t-field="clubber.investment" t-field-options='{"widget": "monetary", "display_currency": "clubber.partner_id.sudo().company_id.currency_id"}'/>
-                    </span>
+
+                    <div>Project owner:<br/>
+                        <span t-field="project.user_id.display_name"/>
+                    </div>
+                    <div>Amount invested:
+                        <span t-field="clubber.investment"/> <span t-field="clubber.partner_id.sudo().company_id.currency_id"/>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3 tcd-padding-0">
@@ -248,7 +252,7 @@
                             <tr>
                                 <td><span t-field="clubber.partner_id.sudo().name"/></td>
                                 <td><span t-field="clubber.role"/></td>
-                                <td><span t-field="clubber.investment" t-field-options='{"widget": "monetary", "display_currency": "clubber.partner_id.sudo().company_id.currency_id"}'/></td>
+                                <td align="center"><span t-field="clubber.investment"/> <span t-field="clubber.partner_id.sudo().company_id.currency_id"/></td>
                             </tr>
                             </t>
                         </tbody>
