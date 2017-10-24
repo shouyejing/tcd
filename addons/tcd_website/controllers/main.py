@@ -92,7 +92,7 @@ class TCDWebsite(http.Controller):
                 set([task.category_id.id for task in tasks])
             )
 
-            project_tasks_categories[clubber.project_id.id] = categories
+            project_tasks_categories[clubber.project_id.id] = categories.sorted("sequence")
         return project_tasks_categories
 
     def get_project_category_tasks(self, project, task_category):

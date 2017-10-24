@@ -30,7 +30,7 @@
                     <div>Project owner:<br/>
                         <span t-field="project.user_id.display_name"/>
                     </div>
-                    <div>Amount invested:
+                    <div>Amount invested:<br/>
                         <span t-field="clubber.investment"/> <span t-field="clubber.partner_id.sudo().company_id.currency_id"/>
                     </div>
                 </div>
@@ -279,8 +279,8 @@
                             <tr>
                                 <td><span t-field="indicator.indicator_id.name"/></td>
                                 <td><span t-field="indicator.date"/></td>
-                                <td><span t-field="indicator.budget" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
-                                <td><span t-field="indicator.actual" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                                <td align="center"><span t-field="indicator.budget"/> <span t-field="user.sudo().company_id.currency_id"/></td>
+                                <td align="center"><span t-field="indicator.actual"/> <span t-field="user.sudo().company_id.currency_id"/></td>
                             </tr>
                             </t>
                         </tbody>
@@ -315,8 +315,8 @@
                             <t t-foreach="indicators" t-as="indicator">
                                 <tr>
                                     <td><span t-field="indicator.date"/></td>
-                                    <td><span t-field="indicator.budget" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
-                                    <td><span t-field="indicator.actual" t-field-options='{"widget": "monetary", "display_currency": "user.sudo().company_id.currency_id"}'/></td>
+                                    <td align="center"><span t-field="indicator.budget"/> <span t-field="user.sudo().company_id.currency_id"/></td>
+                                    <td align="center"><span t-field="indicator.actual"/> <span t-field="user.sudo().company_id.currency_id"/></td>
                                 </tr>
                             </t>
                         </tbody>
