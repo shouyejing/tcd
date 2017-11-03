@@ -26,6 +26,7 @@
                     <field name="partner_id"/>
                     <field name="role"/>
                     <field name="investment"/>
+                    <field name="ownership"/>
                     <button type="object" icon="fa-trash-o" name="unlink"
                             attrs="{'invisible': [('partner_id', '=', False)]}"/>
                 </tree>

@@ -35,6 +35,7 @@ class Clubber(models.Model):
         ('tcd', 'The Club Deal'),
     ], string='Role', required=True)
     investment = fields.Float('Investment')
+    ownership = fields.Float('Ownership in %')
     shares = fields.Integer('Nbr of Shares')
 
     @api.constrains('investment')

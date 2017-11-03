@@ -244,7 +244,7 @@
                             <tr>
                                 <td>Club Members</td>
                                 <td>Role</td>
-                                <td>Amount invested</td>
+                                <td>Ownership</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -252,7 +252,7 @@
                             <tr>
                                 <td><span t-field="clubber.partner_id.sudo().name"/></td>
                                 <td><span t-field="clubber.role"/></td>
-                                <td align="center"><span t-field="clubber.investment"/> <span t-field="clubber.partner_id.sudo().company_id.currency_id"/></td>
+                                <td align="center"><span t-field="clubber.ownership"/> %</td>
                             </tr>
                             </t>
                         </tbody>
